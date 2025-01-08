@@ -1,0 +1,40 @@
+<!-- 
+
+on - especifica uma condição de acionar usando um acionador da lista.
+(idle, timer, viewport, interaction, hover, immediate, prefetch)
+
+- idle: Aciona quando o navegador está ocioso, sem tarefas prioritárias em execução.
+
+- timer: Aciona após um período de tempo definido.
+
+- viewport: Aciona quando o elemento entra na área visível da tela (viewport).
+
+- interaction: Aciona após qualquer interação do usuário, como clique ou toque.
+
+- hover: Aciona quando o cursor do usuário passa sobre o elemento.
+
+- immediate: Aciona imediatamente após o carregamento da página.
+
+- prefetch: Aciona de forma antecipada, antes que o recurso seja necessário, para melhorar a performance.
+
+when - especifica uma condição imperativa como uma expressão que retorna 
+um booleano. Quando esta expressão se torna verdadeira, o espaço reservado 
+é trocado pelo conteúdo carregado lentamente (o que pode ser uma operação 
+assíncrona se as dependências precisarem ser buscadas).
+
+Nota: Vários on triggers são sempre condições OR. Da mesma forma, on misturado 
+com when também são condições OR. 
+
+-->
+
+<h2 #trigger>Deferrable Views</h2>
+
+@defer(on interaction; prefetch on idle) {
+    <app-new-component/>
+} @placeholder {
+    <p>Mostrar antes de carregar algo.</p>
+} @loading {
+    <p>Loading...</p>
+} @error {
+    <p>Loading failed :(</p>
+}
