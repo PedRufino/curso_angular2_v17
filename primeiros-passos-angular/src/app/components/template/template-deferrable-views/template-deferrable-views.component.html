@@ -28,12 +28,17 @@ com when também são condições OR.
 -->
 
 <h2 #trigger>Deferrable Views</h2>
+<button (click)="isTrue = true">Add True</button>
 
-@defer(on interaction; prefetch on idle) {
+<!-- @defer(when loadingData$ | async) -->
+<!-- @placeholder(minimum 5s) -->
+<!-- @loading(after 150ms; minimum 5s) -->
+
+@defer(on interaction){
     <app-new-component/>
 } @placeholder {
     <p>Mostrar antes de carregar algo.</p>
-} @loading {
+} @loading(after 150ms; minimum 5s) {
     <p>Loading...</p>
 } @error {
     <p>Loading failed :(</p>
